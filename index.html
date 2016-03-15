@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<!-- header::Start -->
+	<head>
+		<!-- Use Internet Explorer 9 Standards mode for Eclipse Browser Control - https://www.eclipse.org/swt/faq.php#browsernativeie and https://msdn.microsoft.com/en-us/library/jj676915%28v=vs.85%29.aspx -->
+  		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+		<!-- Next 2 http=equiv headers required to disable caching the Eclipse Browser Widget -->
+		<meta http-equiv="Pragma" content="no-cache">
+  		<meta http-equiv="Expires" content="-1">
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<meta name="copyright" content="Copyright IBM Corporation 2014" />
+		<meta name="abstract" content="IBM Integration Bus V10 Performance Artefacts">
+		<meta name="author" content="IBM">
+		<meta name="description" content="IBM Integration Bus V10 Performance Artefacts">
+		<meta name="keywords" content="keywords" >
+		<meta name="robots" content="index,follow">
+		<meta name="source" content="IBM Integration Bus V10 Performance Artefacts" />
+
+		<title>IBM Integration Bus V10 Performance Artefacts</title>
+
+    	<link rel="stylesheet" href="https://ot4i.github.io/iib-tutorials/css/main.css" />
+		<link rel="stylesheet" href="https://ot4i.github.io/iib-tutorials/css/app.css" />
+
+		<script src="https://ot4i.github.io/iib-tutorials/js/json2.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/js2java.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/js2java_steps.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/modernizr.js"></script>
+	</head>
+<!-- header::End -->
+<!-- body::Start -->
+  <body>
+  	<!-- body content here -->
+	<div class="row">
+	  <div class="small-12 medium-12 large-12 columns">
+	    <p> </p>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="small-9 medium-9 large-9 columns">
+	    <h4 class="title">IBM Integration Bus V10 Performance Testing Samples<action></action> </h4>
+	  </div>
+	  <div class="small-3 medium-3 large-3 columns">
+		<a target="_blank" href="https://www-01.ibm.com/support/knowledgecenter/#!/SSMKHH_10.0.0/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm">IBM Knowledge Center</a>
+	  </div>
+	</div>
+	<hr>
+	<div class="row">
+		  <div class="small-12 medium-12 large-12 columns">
+			<ul class="tabs vertical">
+				<li class="tab-title tab-title-small active">
+				  <a href="javascript:;" onclick="show('panel21')">Create</a>
+				</li>
+				<li class="tab-title tab-title-small">
+				  <a href="javascript:;" onclick="show('panel31')">Prepare</a>
+				</li>
+				<li class="tab-title tab-title-small">
+				  <a href="javascript:;" onclick="show('panel41')">Run</a>
+				</li>
+			</ul>
+			<!-- editing -->
+			<div class="tabs-content panel-thin-blue vertical">
+		    	<div class="content active" id="panel21">
+
+		    		<div class="small-10 medium-10 large-10 columns">
+
+				      	<div class="row content-details">
+
+<p dir="ltr"> The attached IIB V10002 Project Interchange (PI) file
+(IIBV10002PerformanceSamples.zip) includes the applications used to
+produce the IIB V10 Performance Reports. The PI file contains the
+following applications:</p>
+<ul dir="ltr" style="margin-left: 40px;">
+	<li>Aggregation Sample</li>
+	<li>Coordinated Request Reply Sample</li>
+	<li>File Out File In Sample</li>
+	<li>Large Message Sample</li>
+    <li>Routing Cache Sample</li>
+	<li>SOAPConsumer</li>
+	<li>SOAPProvider</li>
+	<li>Transformation Sample</li>
+    <li>RESTful API Sample</li>
+    <li>ISO 8583 Sample</li>
+</ul>
+<p dir="ltr">
+	There are also several libraries which contain the associated schemas and message sets.</p>
+<p dir="ltr"> In addition to the above, is an "Independent Resources"
+folder which contains the input messages (256byte, 2k and 20k) for the
+above applications, as well as MQ and Database configuration
+information.</p>
+<p dir="ltr">
+	The 2<sup>nd</sup> attachment
+(IIBV10002PerformanceSamplesRunConfigurations.zip) is a set of "run
+configurations", that once the JMSPerfHarness performance test client
+jar is copied into the workspace, will performance test each
+application above.</p>
+<p dir="ltr"> This document describes the setup and invocation of the
+above performance applications within the IBM Integration Toolkit on
+the Windows platform. However, running them on other platforms is as
+simple as creating a broker on a remote environment and deploying
+directly to it.</p>
+<h2 dir="ltr">
+	Setup</h2>
+<p dir="ltr"> In order to run these samples, install IBM Integration
+Toolkit and runtime V10.0.0.2, and download
+IIBV10.0.0.2PerformanceSamples.zip and
+IIBV10.0.0.2PerformanceSamplesRunConfigurations.zip.</p>
+<h3 dir="ltr">
+	Sample Artefacts</h3>
+<p dir="ltr">
+	Download these zip files:</p>
+<p dir="ltr" style="margin-left: 40px;">
+	<a href="https://github.ibm.com/CONVERY/iib-V10-Performance-Artefacts/blob/master/IIBV10.0.0.2PerformanceSamplesPI.zip?raw=true" lconnwikiparamwikiattachment="IIBv10.0.0.2PerformanceSamples.zip">IIB V10.0.0.2 Performance Samples PI</a></p>
+<p dir="ltr" style="margin-left: 40px;">
+	<a href="https://github.ibm.com/CONVERY/iib-V10-Performance-Artefacts/blob/master/IIBv10.0.0.2PerformanceSamplesRunConfigurations.zip?raw=true" lconnwikiparamwikiattachment="IIBv10.0.0.2PerformanceSamplesRunConfigurations.zip">IIB V10.0.0.2 Performance Samples Run Configurations</a></p>
+<p dir="ltr">
+	Follow these steps to import the sample artefacts:</p>
+<ol dir="ltr">
+	<li>
+		Start the toolkit specifying a new workspace.</li>
+	<li>
+		Go to menu "File" Import, select "Other Project Interchange" and click <strong>Next</strong>.</li>
+	<li>
+		Select <strong>IIBV10.0.0.2PerformanceSamples.zip</strong> as the value for "From zip file", ensure all projects are select and click <strong>Finish</strong>.</li>
+	<li>
+		Using an unzip program, unzip the file <strong>IIBv10.0.0.2PerformanceSamplesRunConfigurations.zip</strong>. A directory called "IIBv10.0.0.2PerformanceSamplesRunConfigurations will be created containing several "*.launch files.</li>
+	<li>
+		Go to menu "File" Import, select "Run/Debug" Launch Configurations" and click <strong>Next</strong>.</li>
+	<li>
+		Select the directory <strong>IIBv10.0.0.2PerformanceSamplesRunConfigurations</strong>
+created by unzipping the file above as the value for "From Directory",
+ensure the directory and all "*.launch files are selected and click <strong>Finish</strong>.</li>
+	<li>
+		Click the following icon to go to the "Integration Development perspective:</li>
+</ol>
+<p dir="ltr" style="margin-left: 40px;">
+	<span style="font-family: times new roman;"><span style="font-size: 12pt;"><img src="images/image001.png" height="40" width="247"></span></span></p>
+<p dir="ltr">
+	&nbsp;</p>
+<h3 dir="ltr">
+	Performance Harness</h3>
+<p dir="ltr">
+	Follow these steps to import the PerfHarness jar:</p>
+<ol dir="ltr" style="margin-left: 40px;">
+	<li>Go to the GitHub perf-harness repository releases <a target="_blank" href="https://github.ibm.com/CONVERY/perf-harness/releases/">https://github.ibm.com/CONVERY/perf-harness/releases/</a></li>
+	<li>Download the "Perfharness.zip" from the latest release.</li>
+	<li>Unzip this file.</li>
+	<li>Drag and drop the <strong>perfharness.jar</strong> file to the "Independent Resources" PerfHarness Java project in the workspace.</li>
+</ol>
+<p dir="ltr" style="margin-left: 40px;">
+	<img src="images/image003.png"></p>
+<p dir="ltr"> In addition, to run JMSPerfHarness using MQ, it must have
+the MQ JARs available. Each run configuration has a link to the
+"PerfHarness Java project to pick up any associated JAR files.</p>
+<p dir="ltr">
+	For example:</p>
+<p dir="ltr" style="margin-left: 40px;">
+	<img src="images/image005.png"></p>
+<p dir="ltr">
+	&nbsp;</p>
+<p dir="ltr"> "Right-click on the "PerfHarness Java project, select
+"properties and then "Java Build Path". Ensure the directory is correct
+for the <strong>com.ibm.mq.jar</strong> and <strong>jms.jar</strong> JARs:</p>
+<p dir="ltr" style="margin-left: 40px;">
+	<img src="images/image007.png"></p>
+<p dir="ltr">
+	&nbsp;</p>
+
+						</div>
+
+						<div class="row content-details">
+							<h4>Find out more</h4>
+							<ul>
+
+
+
+								<li><a target="_blank" href="https://developer.ibm.com/integration/docs/ibm-integration-bus/performance/" title="Integration Bus V10 Performance Reports">Integration Bus V10 Performance Reports</a>  </li>
+
+
+							</ul>
+						</div>
+
+					</div>
+
+		    	</div>
+		    	<div class="content" id="panel31">
+
+					<div class="small-12 medium-12 large-12 columns">
+
+						<div class="row content-details">
+                            <p>If you are going to be running any of the samples that require MQ (Aggregation, Coordinated Request Reply, FileOutFileIn, ISO8583, Large Message, Routing Cache and Transformation) then you will need a integration node with a default queue manager. To create this please follow the sections below - Default Configuration & MQ Resources. If you only want to use the HTTP/SOAP based samples you can use the built in TestNode_{username}</p>
+<h3 dir="ltr">
+	Default Configuration</h3>
+                            <h4>Create a Queue Manager</h4><br>
+<ol style="margin-left: 40px;">
+  <li>From a command console run "<strong>crtmqm TestNodeQM</strong>"</li>
+  <li>Start the queue manager, run "<strong>strmqm TestNodeQM</strong>"</li>
+    <li>Create the Integration Node queues, run "<strong>&lt;IIB-InstallDir&gt;\server\sample\wmq\iib_createqueues.cmd TestNodeQM</strong>"</li>
+  <li>Update the queue manager listener port "<strong>echo alter
+LISTENER(SYSTEM.DEFAULT.LISTENER.TCP) TRPTYPE(TCP) PORT(2414)
+CONTROL(QMGR) | runmqsc TestNodeQM</strong>"</li>
+  <li>Start the queue manager listener "<strong>echo start LISTENER(SYSTEM.DEFAULT.LISTENER.TCP) | runmqsc TestNodeQM</strong>"</li>
+  <li>If you are running against MQ8 you may also need to run:</li>
+    <ul>
+        <li><strong>echo ALTER AUTHINFO(SYSTEM.DEFAULT.AUTHINFO.IDPWOS) AUTHTYPE(IDPWOS) CHCKCLNT(OPTIONAL)| runmqsc TestNodeQM</strong></li>
+        <li><strong>echo REFRESH SECURITY TYPE(CONNAUTH) | runmqsc TestNodeQM</strong></li>
+    </ul>
+</ol>
+	<h4>Create the Integration Node</h4><br>
+<ul style="margin-left: 40px;">
+  <li>Go to Integration Nodes view</li>
+  <li>Right click “Integration Nodes", select “New” then "Local Integration Node".</li>
+</ul>
+<div style="text-align: left;">
+<p dir="ltr" style="margin-left: 40px;">
+	<img src="images/CreateTestNode1.png" height="197" width="733"></p>
+</div>
+<ul style="margin-left: 40px;">
+  <li>Insert the name of the Integration Node (TestNodeMQ) and default queue manager (TestNodeQM)</li>
+</ul>
+<div style="margin-left: 40px;"><img src="images/CreateTestNode2.png" height="611" width="577"></div>
+<ul style="margin-left: 40px;">
+  <li>You should now see TestNodeMQ in the “Integration Nodes” view, including the integration server called default.<br>
+  </li>
+</ul>
+<div style="margin-left: 40px;"><img src="images/CreateTestNode3.png" height="129" width="387"></div>
+<h3 dir="ltr">
+	MQ Resources</h3>
+<p dir="ltr">
+	Create the MQ resources required to run the performance samples:</p>
+<ol dir="ltr" style="margin-left: 40px;">
+	<li>
+		Start an IIB console window.</li>
+	<li>
+		Type <strong>runmqsc TestNodeQM</strong></li>
+	<li>
+		Copy the contents of the file <em>create_MQ.mqsc</em>, from the “<em>Setup and Configuration</em>” folder in the workspace.</li>
+</ol>
+<p dir="ltr" style="margin-left: 40px;">
+	<img src="images/image011.png" ></p>
+<ol dir="ltr">
+	<li value="4">
+		Paste the MQ commands into the console window.</li>
+	<li>
+		Type <strong>end</strong> to complete the updates.</li>
+</ol>
+                            <h3>File node directory setup</h3>
+<p dir="ltr">
+	In order to run the <em>File Out File In performance application</em>, the following environment variable needs to be configured for the broker.</p>
+<ol dir="ltr" style="margin-left: 40px;">
+	<li>
+		In the directory <strong>C:\ProgramData\IBM\MQSI\common\profiles</strong>, create a new file call <strong>performanceTests.cmd.</strong></li>
+	<li style="color: black;">
+		<span style="color: windowtext;">Edit <strong>performanceTests.cmd</strong>, adding the line</span></li>
+</ol>
+<p dir="ltr" style="margin-left: 54pt;">
+	<strong><span style="color: black;">set MQSI_FILENODES_ROOT_DIRECTORY=c:\temp</span></strong></p>
+<ol dir="ltr" style="margin-left: 40px;">
+	<li style="color: black;" value="3">
+		Create the following directory structure <strong>c:\temp\file\input</strong></li>
+	<li>
+		Stop the broker by running <strong>mqsistop TestNodeMQ</strong>.</li>
+	<li>
+		Start the broker by running <strong>mqsistart TestNodeMQ</strong>.</li>
+</ol>
+                            <h3 dir="ltr">
+	DB2 Resources</h3>
+<p dir="ltr">
+	Only follow this step if you plan to deploy and test the <em>DataWarehouse Sample</em>.</p>
+<p dir="ltr">
+	The <em>Routing Cache Sample</em> requires a database called <em>USERDB</em> and a table called <em>routing_table</em> to be configured. These instructions assume this will be done in DB2, however an alternative database can be used.</p>
+<ol dir="ltr">
+	<li>
+		Start the “DB2 CommandLine Processor” window</li>
+</ol>
+<p dir="ltr" style="margin-left: 40px;">
+	<img src="images/image013.png"></p>
+<ol dir="ltr">
+	<li value="2">
+		&nbsp;Run the commands in the <em>create_db2_tables</em> script from the “<em>Setup and Configuration</em>” folder in the workspace.</li>
+</ol>
+<p dir="ltr" style="margin-left:36.0pt;">
+	<img src="images/image015.png"></p>
+<ol dir="ltr">
+	<li value="3">
+		Type <strong>quit </strong>to complete the updates.</li>
+	<li>
+		Start an IIB console window.</li>
+	<li>
+		Run the following command to setup the database userid and password: <strong>mqsisetdbparms TestNodeMQ –n USERDB –u <em>&lt;userId&gt;</em> -p <em>&lt;password&gt;</em></strong></li>
+	<li>
+		If running the <em>File Out File In performance application</em>, go to the next section, otherwise stop and start the broker here:
+		<ol style="list-style-type:lower-alpha;">
+			<li>
+				Stop the broker by running <strong>mqsistop TestNodeMQ</strong>.</li>
+			<li>
+				Start the broker by running <strong>mqsistart TestNodeMQ</strong>.</li>
+		</ol>
+	</li>
+
+    <li>Next we must had a system ODBC referance for USERDB. On windows this is done by launching the ODBC panel (Control Panel-Administrative Tools-ODBC Data Sources (64-bit). Once open select the System panel as shown below</li>
+
+	   <img style="margin-left:36.0pt;" width="609" src="images/image070.png" lconnwikiparamwikipage="Performance Sample Artefacts"><br>
+                           <li>Select "Add" and select your DB2 Instance</li>
+           	<img style="margin-left:36.0pt;" width="478"  src="images/image071.png" lconnwikiparamwikipage="Performance Sample Artefacts"><br>
+                            <li>Select the USERDB instance and give it a "Data Source Name" of USERDB, Select "Add" and select your DB2 Instance</li>
+                        <img style="margin-left:36.0pt;" width="327"  src="images/image072.png" lconnwikiparamwikipage="Performance Sample Artefacts">  <br>
+                        <li> Once you have completed this it should be listed in your "System Data Sources"</li>
+                	<img style="margin-left:36.0pt;" width="607" src="images/image073.png" lconnwikiparamwikipage="Performance Sample Artefacts">        <br>
+                            </ol></p>
+
+<h3 dir="ltr">Global Cache Setup</h3>
+                            <p>The Coordinated Request Reply sample uses the global cache for storing its transient data. By default the global cache is disabled on an Integration Server. To enable it run the following commands</p>
+                            <ol style="margin-left: 40px;">
+                            <li><strong>mqsistop TestNodeMQ</strong></li>
+                            <li><strong>mqsichangebroker TestNodeMQ -b default</strong></li>
+                            <li><strong>mqsistart TestNodeMQ</strong></li></ol>
+<h3 dir="ltr">REST API Setup</h3>
+                            <p>RESTful API sample requires the Integration Node to be configured to user the Intergration Server HTTP Listener. If you have a default queue manager, by default the HTTP nodes will use the Integration Node wide listener. If there is no default queue manager there no extra configuration is required. To update the configuration to use the Intergration Server HTTP Listener run the following commands
+<ol style="margin-left: 40px;">
+                            <li><strong>mqsistop TestNodeMQ</strong></li>
+                            <li><strong>mqsichangeproperties TestNodeMQ -e default -o ExecutionGroup -n httpNodesUseEmbeddedListener -v true</strong></li>
+                                <li><strong>mqsichangeproperties TestNodeMQ -b httplistener -o HTTPListener -n startListener -v false</strong></li>
+                                <li><strong>mqsistart TestNodeMQ</strong></li></ol></p>
+<h3 dir="ltr">
+	SOAP Consumer and Provider setup</h3>
+<p dir="ltr">
+	The <em>SOAPProvider application</em> consists of:</p>
+<p dir="ltr" style="margin-left: 40px;">
+	<img src="images/image017.png" lconnwikiparamwikipage="Performance Sample Artefacts"></p>
+<p dir="ltr">
+	It can simply be deployed to the integration server <strong>default</strong>. It listens on the default SOAP 7800 port. The URL is <em>/SoapProvider</em>.</p>
+<p dir="ltr">
+	The <em>SOAPConsumer application</em> consists of:</p>
+<p dir="ltr" style="margin-left: 40px;">
+	<img src="images/image019.png" lconnwikiparamwikipage="Performance Sample Artefacts" ></p>
+<p dir="ltr">
+	It relies on calling the <em>SOAPProvider application</em> using the <em>SOAP Request</em> node. The <em><u>SOAPConsumer application</u></em> should be deployed with the <em>SOAPProvider application</em> to the integration server <strong>default</strong>.</p>
+<p dir="ltr">
+	The <em>SOAPConsumer application</em> listens on the default SOAP 7800 port, its URL is /SoapConsumer. The <em>SOAP Request</em> call is made to <a href="http://localhost:7800/SoapProvider">http://localhost:7800/SoapProvider</a> which is assumed to be the <em>SOAPProvider application</em>.</p>
+<p dir="ltr">
+    <span style="color: black;"><strong>Note:</strong> When the IBM Integration Bus Performance team test the <em>SOAPConsumer application</em>, the <em>SOAPProvider application</em>
+is deployed to a remote machine, which more closely resembles customer
+scenarios. This can easily be achieved by creating an additional broker
+on the remote machine and deploying the <em>SOAPProvider application</em> separately from the <em>SOAPConsumer application</em>. Within the <em><u>SOAPConsumer application</u></em>, the “<em>Web service URL</em>” value, on the “<em>HTTP Transport</em>” tab of the <em>SOAP Request</em> node will need to be changed to refer to the location of the <em>SOAPProvider application</em>.</span></p>
+
+<h3 dir="ltr">
+	RESTful API setup</h3>
+<p dir="ltr">
+	The <em>RESTful API (REST_TransactionService)</em> relies on calling a backend <em>SOAP_TransactionService</em> from a <em>SOAP Request</em> node. The <em><u>SOAP_TransactionService application</u></em> should be deployed with the <em>REST_TransactionSercice</em> to the integration server <strong>default</strong>.</p>
+<p dir="ltr">
+	The <em>SOAP_TransactionService</em> listens on the localhost:7800/TransactionServiceSOAP 7800 port. The <em>SOAP Request</em> nodes makes requests to this URL with "makePayment" and "retrieveTransactions" operations which is assumed to be servied by the <em>SOAP_TransactionService</em>.</p>
+<p dir="ltr">
+    <span style="color: black;"><strong>Note:</strong> When the IBM Integration Bus Performance team test the <em>REST_TransactionService</em>, the <em>SOAP_TransactionService </em>
+is deployed to a remote machine, which more closely resembles customer
+scenarios. This can easily be achieved by creating an additional broker
+on the remote machine and deploying the <em>SOAP_TransactionService</em> separately from the <em>REST_TransactionService</em>. Within the <em><u>REST_TransactionService</u></em>, the “<em>Web service URL</em>” value, on the “<em>HTTP Transport</em>” tab of the <em>SOAP Request</em> node will need to be changed to refer to the location of the <em>SOAP_TransactionService</em>.</span></p>
+
+<h3 dir="ltr">
+	IIB Performance Tuning</h3>
+<p dir="ltr">
+	<span style="color: black;">The following performance tuning will help improve message rates and response times:</span></p>
+<ul dir="ltr" style="margin-left: 40px;">
+	<li>
+		<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;"><span style="color: black;"><span style="color: black;">mqsichangeproperties TestNodeMQ -e default -o HTTPConnector -n maxThreads -v "200"</span></span></span></span></li>
+	<li style="color: black;">
+		<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">mqsistop TestNodeMQ</span></span></li>
+	<li style="color: black;">
+		<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">mqsistart TestNodeMQ</span></span></li>
+</ul>
+
+
+						</div>
+
+						<div class="row content-details">
+							<h4>Find out more</h4>
+							<ul>
+
+
+
+								<li><a target="_blank" href="https://developer.ibm.com/integration/docs/ibm-integration-bus/performance/" title="Integration Bus V10 Performance Reports">Integration Bus V10 Performance Reports</a>  </li>
+
+
+							</ul>
+						</div>
+
+					</div>
+
+		    	</div>
+		    	<div class="content" id="panel41">
+
+		    		<div class="small-10 medium-10 large-10 columns ">
+
+				    	<div class="row content-details">
+					      	<h2 dir="ltr">
+	Running the performance applications</h2>
+<p dir="ltr">
+	Each of the performance samples is packaged as an integration application.</p>
+<ol dir="ltr">
+	<li>
+		View the performance applications in the integration toolkit.</li>
+</ol>
+<p dir="ltr" style="margin-left: 80px;">
+	<img src="images/image021.png"></p>
+<ol dir="ltr">
+	<li value="2">
+		To deploy one of the applications to the broker runtime, simply drag and drop the application to the integration server called <strong>default</strong>.</li>
+</ol>
+<p dir="ltr" style="margin-left: 80px;">
+	<img src="images/image023.png"></p>
+<ol dir="ltr">
+	<li value="3">
+		The application will be deployed.</li>
+</ol>
+<p dir="ltr" style="margin-left: 80px;">
+	<img src="images/image025.png"></p>
+<ol dir="ltr">
+	<li value="4">
+		Then go to the <em>Run</em> menu within the Integration Toolkit, and select “<em>Run Configurations</em>”.</li>
+</ol>
+<p dir="ltr" style="margin-left: 80px;">
+	<img src="images/image027.png"></p>
+<ol dir="ltr">
+	<li value="5">
+		Expand the “<em>Java Application</em>” section, and select one of the <em>Aggregation</em> tests, followed by clicking <strong>Run</strong>.</li>
+</ol>
+<p dir="ltr" style="margin-left: 80px;">
+	<img src="images/image029.png"></p>
+<ol dir="ltr">
+	<li value="6">
+		Several prompts will appear, displaying default values. The defaults values may be different if an alternative or remote broker and queue manager are deployed to. For the queue manager (IB9QMGR) listener port, change or accept the default, and click OK.</li>
+</ol>
+<p dir="ltr" style="margin-left: 80px;">
+	<img src="images/image031.png"></p>
+<ol dir="ltr">
+	<li value="7">
+		For the queue manager name (IB9QMGR), change or accept the default, and click OK.</li>
+</ol>
+<p dir="ltr" style="margin-left: 80px;">
+	<img src="images/image033.png"></p>
+<ol dir="ltr">
+	<li value="8">
+		For the host name (localhost), change or accept the default, and click OK.</li>
+</ol>
+<p dir="ltr" style="margin-left: 80px;">
+	<img src="images/image035.png" ></p>
+<ol dir="ltr">
+	<li value="9">
+		For the number of client threads that put and get messages, change or accept the default, and click OK.</li>
+</ol>
+<p dir="ltr" style="margin-left: 80px;">
+	<img src="images/image037.png"></p>
+<ol dir="ltr">
+	<li value="10">
+		For the test run length in seconds, change or accept the default, and click OK.</li>
+</ol>
+<p dir="ltr" style="margin-left: 80px;">
+	<img src="images/image039.png" ></p>
+<ol dir="ltr">
+	<li value="11">
+		Performance Harness will then run and report the message rate every second, with a final summary.</li>
+</ol>
+<p dir="ltr" style="margin-left: 80px;">
+	<img  src="images/image041.png"></p>
+<p dir="ltr" style="margin-left:36.0pt;">
+	The output is described as:</p>
+<ul dir="ltr" style="margin-left: 40px;">
+	<li>
+		<span dir="LTR"><strong>Rate</strong> is the average number of transactions per second (TPS) for all threads. This is displayed according to the –ss flag on PerfHarness, the default is every 5 seconds.</span></li>
+	<li>
+		<span dir="LTR"><strong>Threads</strong> is the number of client threads running inside PerfHarness. Each thread puts a request message and waits for a response. The default is 10. The user is prompted to change this value.</span></li>
+	<li>
+		<span dir="LTR"><strong>totalIterations</strong> is the total number of messages processed in the run.</span></li>
+	<li>
+		<span dir="LTR"><strong>avgDuration</strong> is the length of run in seconds. It is fractionally greater than 60 seconds due to the time taken starting the threads. There is a small pause between each thread started.</span></li>
+	<li>
+		<span dir="LTR"><strong>totalRate</strong> is the average TPS across the run.</span></li>
+</ul>
+
+<p dir="ltr">
+	Repeat this process for the other performance applications. Ensure only 1 application is active at a time, as they share MQ queues. Either <strong>delete</strong> or <strong>stop</strong> applications not being tested.</p>
+                            <p><strong>Note:</strong> All of the MQ based applications use the same input and output queues so you can only have 1 of them deployed at any one time.</p>
+<h2 dir="ltr">
+	Further performance tuning</h2>
+<ul dir="ltr">
+	<li>
+		<p style="margin-left: 36pt; text-indent: -18pt; background: none repeat scroll 0% 0% white;">
+			<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;"><span style="color: black;">If running persistent messaging tests, refer to performance report for additional queue manager tuning.</span></span></span></p>
+	</li>
+</ul>
+
+
+						</div>
+
+						<div class="row content-details">
+							<h4>Find out more</h4>
+							<ul>
+
+
+
+								<li> <a target="_blank" href="https://developer.ibm.com/integration/docs/ibm-integration-bus/performance/" title="Integration Bus V10 Performance Reports">Integration Bus V10 Performance Reports</a> </li>
+
+
+							</ul>
+						</div>
+
+					</div>
+
+
+				</div>
+			</div> <!-- tab-content -->
+		</div> <!-- columns -->
+	  </div> <!-- row --><script src="https://ot4i.github.io/iib-tutorials/js/vendor/jquery.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/foundation.min.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/main.js"></script>
+	<!-- body::End -->
+
+</body></html>
